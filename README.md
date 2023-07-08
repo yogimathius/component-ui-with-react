@@ -1,51 +1,192 @@
 # Component-based UI with React
-This README outlines the lecture agenda and concepts that will be covered in our live-coding session. Please use this as a reference to help guide your learning throughout the session.
+
+[Setting up Development Environment](#setting-up-development-environment) | [Build Components](#build-components) | [Review Basic React Patterns](#review-basic-react-patterns) | [ES6 Features](#es6-features) | [More Advanced React Patterns](#more-advanced-react-patterns) | [Integrate Components](#integrate-components) | [Eject The Application](#eject-the-application)
 
 ## Agenda
-- [ ] **Review concepts from last week:**
-    - [ ] Components
-    - [ ] Props
-    - [ ] State
-    - [ ] Event Handlers
-    - [ ] Controlled Components
-    - [ ] ES6 features including:
-      - [ ] object/array destructuring
-      - [ ] spread operator
-      - [ ] property shorthand
 
-- [ ] **Extend concepts from last week:**
-    - [ ] passing props with spread operator
-    - [ ] passing actions down as props
-    - [ ] lifting state up
-    - [ ] creating a controlled list using `<ul>` with clickable `<li>`
+**[Setting up Development Environment](#setting-up-development-environment)**
+  - [ ] ESLint and Prettier in the IDE.
+  - [ ] CRA.
+  - [ ] SCSS with React.
+  - [ ] Storybook.
 
-- [ ] **Storybook:**
-    - [ ] How Storybook is used to test a React component
-    - [ ] Storybook index.js file
+**[Build Components](#build-components)**
+  - [ ] Design and build in isolation.
+  - [ ] Add component to Storybook.
+  - [ ] Component interface, accepting props and returning React elements.
+  - [ ] Expected props and the type of data each represents.
 
-- [ ] **React Dev Tools**
+**[Review Basic React Patterns](#review-basic-react-patterns)**
+  - [ ] Review concepts from last week.
+  - [ ] Components.
+  - [ ] Props.
+  - [ ] State.
+  - [ ] Event Handlers.
+  - [ ] Controlled Components.
 
-## Review Concepts from Last Week
+**[ES6 Features](#es6-features)**
+  - [ ] Object/array destructuring.
+  - [ ] Spread operator.
+  - [ ] Property shorthand.
 
-### Components
+**[More Advanced React Patterns](#more-advanced-react-patterns)**
+  - [ ] Passing props with spread operator.
+  - [ ] Passing actions down as props.
+  - [ ] Lifting state up.
+  - [ ] Creating a controlled list using `<ul>` with clickable `<li>`.
 
-Components are the building blocks in React. They allow you to create reusable pieces of code. Components can be either functional or class-based, but we will focus on functional components.
+**[Integrate Components](#integrate-components)**
+  - [ ] Combine components.
+  - [ ] Actions from parent components.
+  - [ ] Lifting state.
 
-```jsx
-// Functional Component
-const Welcome = (props) => <h1>Hello, {props.name}</h1>;
+**[Eject The Application](#eject-the-applicatin)**
+ - [ ] What is this? Why do we do it?
+ - [ ] How to do it.
+ - [ ] Implications.
+
+## Setting up Development Environment
+
+### ESLint and Prettier in the IDE
+
+ESLint and Prettier are key tools for maintaining high-quality, consistent JavaScript code. ESLint helps catch errors and enforce coding conventions, while Prettier formats code for consistent styling. 
+
+Here is an example of installing ESLint and Prettier in a project:
+
+```bash
+npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-### Props
+Then, in your `.eslintrc` configuration file, you can extend `prettier` to apply the rules.
 
-Props (short for properties) are a way of passing data from parent to child components.
+```json
+{
+  "extends": ["prettier"]
+}
+```
+
+### CRA
+
+Create React App (CRA) is a command line tool that helps you create a new React.js application with a single command. It sets up a comfortable development environment that uses Webpack, Babel, ESLint, and other tools.
+
+Here is an example of creating a new app:
+
+```bash
+npx create-react-app my-app
+```
+
+### SCSS with React
+
+SCSS (or SASS) is a CSS preprocessor that adds many useful features like variables, nesting, and mixins, among other things. It can be used in a React application by installing node-sass:
+
+```bash
+npm install node-sass
+```
+
+Then, you can import your .scss files into your component:
 
 ```jsx
-const Welcome = (props) => <h1>Hello, {props.name}</h1>;
+import './MyComponent.scss';
 
-// Use the component
-<Welcome name="John Doe" />
+const MyComponent = () => (
+  <div className="my-component">
+    Hello, World!
+  </div>
+);
 ```
+
+### Storybook
+
+Storybook is a tool for developing and testing UI components in isolation. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
+
+To install Storybook, you can use the following command:
+
+```bash
+npx -p @storybook/cli sb init
+```
+
+After running the command, start Storybook by running:
+
+```bash
+npm run storybook
+```
+
+## Build Components
+
+### Design and build in isolation
+
+Designing and building components in isolation promotes component reusability and helps to maintain a clean codebase. This approach allows you to focus on one component at a time without worrying about how it will interact with the rest of your app. Tools like Storybook facilitate this process.
+
+Here's an example of a simple React component that could be built in isolation:
+
+```jsx
+import React from 'react';
+
+const MyComponent = (props) => (
+  <div>
+    <h1>{props.title}</h1>
+    <p>{props.content}</p>
+  </div>
+);
+
+export default MyComponent;
+```
+
+### Adding to Storybook
+
+This component could then be used in a Storybook story:
+
+```jsx
+import React from 'react';
+import MyComponent from './MyComponent';
+
+export default {
+  title: 'MyComponent',
+  component: MyComponent,
+};
+
+export const Default = () => <MyComponent title="Hello, World!" content="Lorem ipsum" />;
+```
+
+### Component Interface
+
+The "interface" of a component refers to the props that it accepts. In our `MyComponent` example above, the interface is `props`.
+
+```jsx
+const MyComponent = (props) => (
+  <div>
+    <h1>{props.title}</h1>
+    <p>{props.content}</p>
+  </div>
+);
+```
+
+Each prop has an implicit "type" of data that it represents. In this case, both `title` and `content` are expected to be strings.
+
+### Expected props and the type of data each represents
+
+Prop types are a way to enforce that components are used correctly, and can be especially helpful during development to catch potential issues. In our `MyComponent` example, we could add PropTypes like so:
+
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const MyComponent = (props) => (
+  <div>
+    <h1>{props.title}</h1>
+    <p>{props.content}</p>
+  </div>
+);
+
+MyComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
+
+export default MyComponent;
+```
+
+With this, if `MyComponent` is used without a `title` or `content`, or with props of the wrong type, a warning will be logged in the console.
 
 ### State
 
@@ -106,73 +247,102 @@ const ControlledInput = () => {
 
 - **Object/Array Destructuring:** A handy feature that allows you to extract properties from an object or array.
 
-    ```jsx
-    const person = { name: 'John Doe', age: 30 };
-    const { name, age } = person; // name = 'John Doe', age = 30
+```jsx
+const person = { name: 'John Doe', age: 30 };
+const { name, age } = person; // name = 'John Doe', age = 30
 
-    const array = ['first', 'second', 'third'];
-    const [first, second] = array; // first = 'first', second = 'second'
-    ```
+const array = ['first', 'second', 'third'];
+const [first, second] = array; // first = 'first', second = 'second'
+```
 
 - **Spread Operator:** Allows an iterable such as an array expression or string to be expanded in places where zero or more arguments or elements are expected.
 
-    ```jsx
-    const oldArray = [1, 2, 3];
-    const newArray = [...oldArray, 4, 5]; // newArray = [1, 2, 3, 4, 5]
-    ```
+```jsx
+const oldArray = [1, 2, 3];
+const newArray = [...oldArray, 4, 5]; // newArray = [1, 2, 3, 4, 5]
+```
 
 - **Property Shorthand:** If you want to create an object with properties that are currently in variables, you can use the shorthand syntax.
 
-    ```jsx
-    const name = 'John Doe';
-    const age = 30;
-    const person = { name, age }; // equivalent to { name: name, age: age }
-    ```
+```jsx
+const name = 'John Doe';
+const age = 30;
+const person = { name, age }; // equivalent to { name: name, age: age }
+```
 
 ## Extend Concepts from Last Week
 
 ### Passing Props with Spread Operator
 
-The spread operator can be used to pass the entire props object to a child component.
+The spread operator can be used to pass the entire props object to a child component, such as the Item component in our case.
+
+Without the spread operator:
 
 ```jsx
-const Person = (props) => (
-  <div>
-    <p>Name: {props.name}</p>
-    <p>Age: {props.age}</p>
-  </div>
-);
-
-const App = () => {
-  const person = {
-    name: 'John Doe',
-    age: 30,
+const List = () => {
+  const item = {
+    name: 'Item 1',
+    description: 'This is the first item',
   };
 
-  return <Person {...person} />;
+  return <Item name={item.name} description={item.description} />;
+};
+```
+
+With the spread operator:
+
+```jsx
+const List = () => {
+  const item = {
+    name: 'Item 1',
+    description: 'This is the first item',
+  };
+
+  return <Item {...item} />;
 };
 ```
 
 ### Passing Actions Down as Props
 
-In React, data can flow down from parent to child components through props, and this includes function props which can be used to handle events or execute any other actions.
+In React, data can flow down from parent to child components through props, including function props that handle events or actions.
+
+Without passing actions down as props:
 
 ```jsx
-import { useState } from 'react';
+const Button = () => {
+  const handleClick = () => {
+    console.log('Button clicked');
+  };
 
-const Button = (props) => (
-  <button onClick={props.handleClick}>Click me!</button>
+  return <button onClick={handleClick}>Click me!</button>;
+};
+
+const List = () => {
+  return (
+    <div>
+      <Button />
+      <p>This is a list component</p>
+    </div>
+  );
+};
+```
+
+With passing actions down as props:
+
+```jsx
+const Button = ({ handleClick }) => (
+  <button onClick={handleClick}>Click me!</button>
 );
 
-const App = () => {
-  const [count, setCount] = useState(0);
-
-  const incrementCount = () => setCount(count + 1);
+const List = () => {
+  const handleClick = () => {
+    console.log('Button clicked');
+  };
 
   return (
     <div>
-      <Button handleClick={incrementCount} />
-      <p>You clicked {count} times</p>
+      <Button handleClick={handleClick} />
+      <p>This is a list component</p>
     </div>
   );
 };
@@ -180,32 +350,104 @@ const App = () => {
 
 ### Lifting State Up
 
-When several components need to share and manipulate the same state, we can "lift the state up" to their closest common ancestor. 
+When several components need to share and manipulate the same state, we can "lift the state up" to their closest common ancestor. In our case, it would be the List component.
+
+Without lifting state up:
 
 ```jsx
-import { useState } from 'react';
-
-const Button = (props) => (
-  <button onClick={props.handleClick}>Increment</button>
-);
-
-const Display = ({ count }) => <p>You clicked {count} times</p>;
-
-const App = () => {
+const Item = () => {
   const [count, setCount] = useState(0);
 
-  const incrementCount = () => setCount(count + 1);
+  const handleClick = () => {
+    setCount(count + 1);
+  };
 
   return (
     <div>
-      <Button handleClick={incrementCount} />
-      <Display count={count} />
+      <p>Item</p>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+};
+
+const List = () => {
+  return (
+    <div>
+      <Item />
+      <p>This is a list component</p>
+    </div>
+  );
+};
+```
+
+With lifting state up:
+
+```jsx
+const Item = ({ count, handleClick }) => (
+  <div>
+    <p>Item</p>
+    <p>Count: {count}</p>
+    <button onClick={handleClick}>Increment</button>
+  </div>
+);
+
+const List = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <Item count={count} handleClick={handleClick} />
+      <p>This is a list component</p>
     </div>
   );
 };
 ```
 
 ### Creating a Controlled List using `<ul>` with Clickable `<li>`
+
+In our case, we can demonstrate a controlled list using the List and Item components.
+
+```jsx
+const Item = ({ item, selected, handleClick }) => (
+  <li onClick={() => handleClick(item)} className={selected ? 'selected' : ''}>
+    {item}
+  </li>
+);
+
+const List = ({ items }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  return (
+    <ul>
+      {items.map((item) => (
+        <Item
+          key={item}
+          item={item}
+          selected={item === selectedItem}
+          handleClick={handleClick}
+        />
+      ))}
+    </ul>
+  );
+};
+
+const App = () => {
+  const items = ['Item 1', 'Item 2', 'Item 3'];
+
+  return <List items={items} />;
+};
+```
+
+In the above example, the List component maintains the selected item state and passes it to the Item components. Each Item component represents a clickable list item and receives the selected state and the handleClick function as props.
 
 We can create a list in React where each list item `<li>` is controlled (clickable).
 
@@ -232,63 +474,35 @@ const App = () => {
 };
 ```
 
-In the above code, we maintain a `selectedItem` state, which is updated whenever a list item is clicked. The selected item is also displayed on the screen.
+Certainly! Here's the updated checklist for the "Eject The Application" section with improved instructions and examples:
 
-## Storybook
+Certainly! Here's the revised version of the "Eject The Application" section with each checklist item as its own subheading:
 
-Storybook is a tool for developing and testing UI components in isolation. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
+### What is Ejecting and Why Do We Do It?
 
-### How Storybook is used to test a React component
+Ejecting a Create React App (CRA) project refers to the process of exposing and taking ownership of the underlying build configuration. It allows developers to have full control over the project's build tools and configurations. Some reasons for ejecting include the need for advanced customizations, integrating additional libraries, or modifying the build process to meet specific requirements.
 
-With Storybook, you can visualize different states of your UI components and develop them interactively.
+### How to Eject the Application
+To eject a CRA project, follow these steps:
 
-Storybook provides a sandbox to build UI components in isolation so you can develop hard-to-reach states and edge cases.
+1. Open your terminal or command prompt.
+2. Navigate to the root directory of your React application.
+3. Run the following command to eject your application:
 
-Here's a simple example of a Storybook story:
+   ```bash
+   npm run eject
+   ```
 
-```jsx
-import { action } from '@storybook/addon-actions';
-import { Button } from '../Button';
+   This command triggers the ejection process, removing the single build dependency from the project. It will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc.) into your project.
 
-export default {
-  title: 'Button',
-  component: Button,
-};
+   > Note: Ejecting is a one-way operation and cannot be reversed. Before proceeding, ensure you commit your changes or create a new branch.
 
-export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
+### Implications of Ejecting
+Ejecting your application has several implications:
 
-export const Emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
-```
+- **Full Control:** Once ejected, you'll have full control over the build configuration and dependencies. You can modify the configurations according to your needs.
+- **Manual Maintenance:** Ejected projects require manual maintenance and configuration. You'll be responsible for keeping the build tools and configurations up to date.
+- **Dependency Management:** With ejection, you'll need to manage the dependencies manually. This includes updating, adding, and removing dependencies as needed.
+- **Loss of CRA Features:** Ejecting means losing the benefits of the Create React App's default configurations, updates, and optimizations. You'll need to handle those aspects yourself.
 
-The `Text` and `Emoji` components are two "stories" that render the `Button` component in two different states: with text and with emojis.
-
-The `action('clicked')` function allows you to simulate and test a user clicking on the button.
-
-### Storybook index.js file
-
-In a typical Storybook setup, the `index.js` file serves as the entry point for your stories. Each story file provides a set of stories that describe a React component, and they are automatically added to the Storybook.
-
-Here's an example of an `index.js` file:
-
-```jsx
-// .storybook/main.js
-
-module.exports = {
-  stories: ['../src/**/*.stories.js'],
-  addons: [
-    '@storybook/preset-create-react-app',
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-  ],
-};
-```
-
-In the above configuration, Storybook will load any file that ends with `.stories.js` as a story. This allows you to colocate your stories with your source files if you wish.
-
-The `addons` field is used to specify which Storybook addons you want to use with your project. In this case, we're using the `@storybook/preset-create-react-app` for easy setup with Create React App, the `@storybook/addon-actions` to log actions (user interactions) in the Storybook UI, and the `@storybook/addon-links` to enable linking between stories.
+Make sure to carefully consider the implications before proceeding with the ejection process.
