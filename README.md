@@ -5,8 +5,8 @@
 ## Agenda
 
 **[Setting up Development Environment](#setting-up-development-environment)**
-  - [ ] ESLint and Prettier in the IDE.
   - [ ] CRA.
+  - [ ] ESLint and Prettier in the IDE.
   - [ ] SCSS with React.
   - [ ] Storybook.
 
@@ -47,24 +47,6 @@
 
 ## Setting up Development Environment
 
-### ESLint and Prettier in the IDE
-
-ESLint and Prettier are key tools for maintaining high-quality, consistent JavaScript code. ESLint helps catch errors and enforce coding conventions, while Prettier formats code for consistent styling. 
-
-Here is an example of installing ESLint and Prettier in a project:
-
-```bash
-npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
-```
-
-Then, in your `.eslintrc` configuration file, you can extend `prettier` to apply the rules.
-
-```json
-{
-  "extends": ["prettier"]
-}
-```
-
 ### CRA
 
 Create React App (CRA) is a command line tool that helps you create a new React.js application with a single command. It sets up a comfortable development environment that uses Webpack, Babel, ESLint, and other tools.
@@ -74,6 +56,86 @@ Here is an example of creating a new app:
 ```bash
 npx create-react-app my-app
 ```
+
+### ESLint and Prettier in the IDE
+
+To make ESLint work with React JSX, you need to:
+
+1. Install the necessary ESLint plugins for React.
+2. Configure ESLint to understand the JSX syntax.
+
+Here's how to do both of these:
+
+### Installing Necessary Plugins
+
+Firstly, you need to install the ESLint plugin for React. This plugin adds React specific linting rules to ESLint. If you're also using JSX, you'll need the ESLint plugin for JSX as well.
+
+You can install these plugins using npm or yarn.
+
+With npm:
+
+```bash
+npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
+```
+
+With yarn:
+
+```bash
+yarn add --dev eslint-plugin-react eslint-plugin-jsx-a11y
+```
+
+### Configuring ESLint to Understand JSX
+
+Next, you need to modify your ESLint configuration to include these plugins and to allow JSX syntax. In your ESLint configuration file, add these lines:
+
+```json
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ],
+  "rules": {
+    /* Your existing rules */
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Automatically detect the react version
+    }
+  }
+}
+```
+
+This configuration tells ESLint to use the installed plugins and to allow JSX syntax. In the `extends` array, `"plugin:react/recommended"` and `"plugin:jsx-a11y/recommended"` are the recommended configurations for these plugins. 
+
+`"ecmaFeatures": { "jsx": true }` is needed for ESLint to recognize JSX syntax. 
+
+The `"settings"` field is used by the React plugin to automatically detect and use the installed version of React.
+
+Please note that the ESLint configuration file could be named `.eslintrc.json`, `.eslintrc`, or `eslint.config.js`, among others. The naming depends on the setup of your project.
+
 
 ### SCSS with React
 
