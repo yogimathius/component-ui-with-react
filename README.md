@@ -59,7 +59,7 @@ npx create-react-app my-app
 
 ### ESLint and Prettier in the IDE
 
-Please follow [This guided walkthrough](./ESLintPrettierSetup.md) to set up ESLint and Prettier for your React Project.
+Please follow [this guided walkthrough](./ESLintPrettierSetup.md) to set up ESLint and Prettier for your React Project.
 
 ### SCSS with React
 
