@@ -32,7 +32,38 @@
     /* Your existing rules */
     "react/react-in-jsx-scope": "off",
     "func-style": ["error", "declaration"],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-var": "error",
+    "no-console": "off",
+    "no-unused-vars": "warn",
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": "error",
+    "keyword-spacing": "error",
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "semi-spacing": "error",
+    "space-infix-ops": "error",
+    "space-in-parens": "error",
+    "camelcase": "error",
+    "eqeqeq": "error",
+    "brace-style": "error",
+    "space-before-function-paren": [ "warn", { "anonymous": "never", "named": "never", "asyncArrow": "never" } ],
+    "func-names": ["error", "never"],
+    "quotes": "off"
   },
   "settings": {
     "react": {
