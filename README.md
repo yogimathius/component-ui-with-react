@@ -336,22 +336,7 @@ const person = { name, age }; // equivalent to { name: name, age: age }
 
 ### Passing Props with Spread Operator
 
-The spread operator can be used to pass the entire props object to a child component, such as the Item component in our case.
-
-Without the spread operator:
-
-```jsx
-const List = () => {
-  const item = {
-    name: 'Item 1',
-    description: 'This is the first item',
-  };
-
-  return <Item name={item.name} description={item.description} />;
-};
-```
-
-With the spread operator:
+The spread operator allows passing the entire props object to a child component, like the `Item` component in our case.
 
 ```jsx
 const List = () => {
@@ -366,30 +351,7 @@ const List = () => {
 
 ### Passing Actions Down as Props
 
-In React, data can flow down from parent to child components through props, including function props that handle events or actions.
-
-Without passing actions down as props:
-
-```jsx
-const Button = () => {
-  const handleClick = () => {
-    console.log('Button clicked');
-  };
-
-  return <button onClick={handleClick}>Click me!</button>;
-};
-
-const List = () => {
-  return (
-    <div>
-      <Button />
-      <p>This is a list component</p>
-    </div>
-  );
-};
-```
-
-With passing actions down as props:
+Data can flow down from parent to child components in React through props, including function props that handle events or actions.
 
 ```jsx
 const Button = ({ handleClick }) => (
@@ -412,38 +374,7 @@ const List = () => {
 
 ### Lifting State Up
 
-When several components need to share and manipulate the same state, we can "lift the state up" to their closest common ancestor. In our case, it would be the List component.
-
-Without lifting state up:
-
-```jsx
-const Item = () => {
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <p>Item</p>
-      <p>Count: {count}</p>
-      <button onClick={handleClick}>Increment</button>
-    </div>
-  );
-};
-
-const List = () => {
-  return (
-    <div>
-      <Item />
-      <p>This is a list component</p>
-    </div>
-  );
-};
-```
-
-With lifting state up:
+When multiple components need to share and manipulate the same state, we can "lift the state up" to their closest common ancestor, such as the `List` component.
 
 ```jsx
 const Item = ({ count, handleClick }) => (
@@ -469,6 +400,8 @@ const List = () => {
   );
 };
 ```
+
+In the `List` component, we manage the state and pass it down to the `Item` component as props.
 
 ### Creating a Controlled List using `<ul>` with Clickable `<li>`
 
@@ -536,9 +469,7 @@ const App = () => {
 };
 ```
 
-Certainly! Here's the updated checklist for the "Eject The Application" section with improved instructions and examples:
-
-Certainly! Here's the revised version of the "Eject The Application" section with each checklist item as its own subheading:
+## Eject the Applications
 
 ### What is Ejecting and Why Do We Do It?
 
