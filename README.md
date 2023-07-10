@@ -476,6 +476,7 @@ const App = () => {
 Ejecting a Create React App (CRA) project refers to the process of exposing and taking ownership of the underlying build configuration. It allows developers to have full control over the project's build tools and configurations. Some reasons for ejecting include the need for advanced customizations, integrating additional libraries, or modifying the build process to meet specific requirements.
 
 ### How to Eject the Application
+
 To eject a CRA project, follow these steps:
 
 1. Open your terminal or command prompt.
