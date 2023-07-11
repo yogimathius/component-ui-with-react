@@ -4,7 +4,7 @@
 
 ## Agenda
 
-Setting up Development Environment
+**Setting up Development Environment**
 
 - [ ] CRA.
 - [ ] ESLint and Prettier in the IDE.
