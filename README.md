@@ -4,14 +4,14 @@
 
 ## Agenda
 
-**[Setting up Development Environment](##setting-up-development-environment)**
+Setting up Development Environment
 
 - [ ] CRA.
 - [ ] ESLint and Prettier in the IDE.
 - [ ] SCSS with React.
 - [ ] Storybook.
 
-**[Build Components](##build-components)**
+**Build Components**
 
 - [ ] Design and build in isolation.
 - [ ] Add component to Storybook.
@@ -21,26 +21,26 @@
 - [ ] Event Handlers.
 - [ ] Controlled Components.
 
-**[ES6 Features](##es6-features)**
+**ES6 Features**
 
 - [ ] Object/array destructuring.
 - [ ] Spread operator.
 - [ ] Property shorthand.
 
-**[More Advanced React Patterns](##more-advanced-react-patterns)**
+**More Advanced React Patterns**
 
 - [ ] Passing props with spread operator.
 - [ ] Passing actions down as props.
 - [ ] Lifting state up.
 - [ ] Creating a controlled list using `<ul>` with clickable `<li>`.
 
-**[Integrate Components](##integrate-components)**
+**Integrate Components**
 
 - [ ] Combine components.
 - [ ] Actions from parent components.
 - [ ] Lifting state.
 
-**[Eject The Application](##eject-the-applicatin)**
+**Eject The Application**
 
 - [ ] What is this? Why do we do it?
 - [ ] How to do it.
