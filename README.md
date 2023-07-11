@@ -1,6 +1,6 @@
 # Component-based UI with React
 
-[Setting up Development Environment](#setting-up-development-environment) | [Build Components](#build-components) | [Review Basic React Patterns](#review-basic-react-patterns) | [ES6 Features](#es6-features) | [More Advanced React Patterns](#more-advanced-react-patterns) | [Integrate Components](#integrate-components) | [Eject The Application](#eject-the-application)
+[Setting up Development Environment](#setting-up-development-environment) | [Build Components](#build-components) | [ES6 Features](#es6-features) | [More Advanced React Patterns](#more-advanced-react-patterns) | [Integrate Components](#integrate-components) | [Eject The Application](#eject-the-application)
 
 ## Agenda
 
