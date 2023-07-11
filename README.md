@@ -127,9 +127,13 @@ storiesOf("MyComponent", module)
   .add("Base", () => <MyComponent title="title" content="content" />);
 ```
 
+**note: this is the syntax for writing stories with version 5.0.10, for details on how to write stories with the latest version, visit [here](https://storybook.js.org/docs/react/writing-stories/introduction)**
+
 ### Component Interface (props)
 
-The "interface" of a component refers to the props that it accepts. In our `MyComponent` example above, the interface is `props`.
+In the context of a React component, "props" (short for properties) are the values you pass to a component that enable it to behave dynamically. The set of props a component expects can sometimes be referred to as the component's "interface", because they define how other components should interact with this component.
+
+Example:
 
 ```jsx
 const MyComponent = (props) => (
