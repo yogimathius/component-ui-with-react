@@ -1,18 +1,17 @@
 # Component-based UI with React
 
-[Setting up Development Environment](#setting-up-development-environment) | [Build Components](#build-components) | [ES6 Features](#es6-features)
-[More Advanced React Patterns](#more-advanced-react-patterns) | [Integrate Components](#integrate-components) | [Eject The Application](#eject-the-application)
+[Setting up Development Environment](#setting-up-development-environment) | [Build Components](#build-components) | [ES6 Features](#es6-features) | [More Advanced React Patterns](#more-advanced-react-patterns) | [Integrate Components](#integrate-components) | [Eject The Application](#eject-the-application)
 
 ## Agenda
 
-**[Setting up Development Environment](#setting-up-development-environment)**
+**[Setting up Development Environment](##setting-up-development-environment)**
 
 - [ ] CRA.
 - [ ] ESLint and Prettier in the IDE.
 - [ ] SCSS with React.
 - [ ] Storybook.
 
-**[Build Components](#build-components)**
+**[Build Components](##build-components)**
 
 - [ ] Design and build in isolation.
 - [ ] Add component to Storybook.
@@ -22,26 +21,26 @@
 - [ ] Event Handlers.
 - [ ] Controlled Components.
 
-**[ES6 Features](#es6-features)**
+**[ES6 Features](##es6-features)**
 
 - [ ] Object/array destructuring.
 - [ ] Spread operator.
 - [ ] Property shorthand.
 
-**[More Advanced React Patterns](#more-advanced-react-patterns)**
+**[More Advanced React Patterns](##more-advanced-react-patterns)**
 
 - [ ] Passing props with spread operator.
 - [ ] Passing actions down as props.
 - [ ] Lifting state up.
 - [ ] Creating a controlled list using `<ul>` with clickable `<li>`.
 
-**[Integrate Components](#integrate-components)**
+**[Integrate Components](##integrate-components)**
 
 - [ ] Combine components.
 - [ ] Actions from parent components.
 - [ ] Lifting state.
 
-**[Eject The Application](#eject-the-applicatin)**
+**[Eject The Application](##eject-the-applicatin)**
 
 - [ ] What is this? Why do we do it?
 - [ ] How to do it.
