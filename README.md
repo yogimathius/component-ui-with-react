@@ -16,7 +16,6 @@
 - [ ] Design and build in isolation.
 - [ ] Add component to Storybook.
 - [ ] Component Interface (props).
-- [ ] Props.
 - [ ] State.
 - [ ] Event Handlers.
 - [ ] Controlled Components.

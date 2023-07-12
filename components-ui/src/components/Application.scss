@@ -1,1 +1,7 @@
 @import "styles/variables.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: #222f3e;
+}
